@@ -1,0 +1,33 @@
+<!-- Register -->
+<h1>Register</h1>
+
+<form action="/users" method='post'>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+	<p>First Name: <input type="text" name="user[first_name]"></p>
+
+	<p>Last Name: <input type="text" name="user[last_name]"></p>
+
+	<p>Email: <input type="text" name="user[email]"></p>
+
+	<p>Description: <textarea name="user[description]"></textarea>
+
+	<p>Password: <input type="text" name="user[password]"></p>
+
+	<p>Password Conf: <input type="text" name="user[password_confirmation]"></p>
+
+	<p><input type="submit" name="Register"></p>
+</form>
+
+<!-- Log In -->
+<h1>Log In</h1>
+<form action="/login" method='post'>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<p>Email: <input type="text" name="email"></p>
+
+	<p>Password: <input type="text" name="password"></p>
+
+	<p><input type="submit" name="Log In"></p>
+</form>

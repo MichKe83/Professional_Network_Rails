@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProfessionalNetworkRailsBelt3</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if session[:user_id] %>
+		<a href="/logout" data-method="delete">Log out</a>
+		| <a href="/networks/<%= session[:user_id] %>">My Professional Profile</a>
+		| <a href="/users">View folks not in my network</a>
+	<% end %>
+
+	<% if flash[:errors] %>
+		<ul>
+			<% flash[:errors].each do |error| %>
+				<li><%= error %></li>
+			<% end %>
+		</ul>
+		
+	<% end %>
+<%= yield %>
+
+</body>
+</html>

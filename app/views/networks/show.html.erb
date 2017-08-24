@@ -1,0 +1,31 @@
+<h2>Hi <%= @user.first_name.titleize %> <%= @user.last_name.titleize %></h2>
+
+<h4>Here is your profile description:</h4>
+
+<textarea><%= @user.description %></textarea>
+
+<hr>
+
+<h4>Your professional network: </h4>
+	<% @friends.each do |friend| %>
+	<p> <a href="/users/<%= friend.id %>"><%= friend.first_name.titleize %> <%= friend.last_name.titleize %></a> <a href="/friendships/<%= friend.id %>" data-method="delete">((Un-Friend))</a></p>
+	<% end %>
+
+<hr>
+
+<h4>Invitations: </h4>
+<p>The following people have asked you to be in their network:</p>
+
+<table>
+	<thead>
+		<th>Name |</th>
+		<th>Action </th>
+	</thead>
+	<% @invitees.each do |invitee| %>		
+	<tr>	
+		<td><a href="/users/<% invitee.id %>"><%= invitee.first_name.titleize %> <%= invitee.last_name.titleize %></a> </td>
+		<td> - <a href="/friendships/<%= invitee.id %>" data-method="post">Accept</a> | <a href="/invites/<%= invitee.id %>" data-method="delete">Ignore</a></td>	
+	</tr>
+
+	<% end %>
+</table>

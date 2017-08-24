@@ -1,0 +1,17 @@
+<!-- People that have not invited me and that are not my friends -->
+
+<h2><%= @user.first_name.titleize %>, these are peeps you might wanna connect with: </h2>
+
+<table>
+	<thead>
+		<th>Name |</th>
+		<th>Action </th>
+	</thead>	
+	<% @users.each do |user| %>
+	<tr> 
+		<td><a href="/users/<%= user.id %>" ><%= user.first_name.titleize %></a></td>
+		<td><a href="/invites/<%= user.id %>" data-method="post">Request to connect</a></td>
+		
+	</tr>
+	<% end %>
+</table>
